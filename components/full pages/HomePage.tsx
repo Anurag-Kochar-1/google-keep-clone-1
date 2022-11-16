@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect , useContext} from 'react'
+import { AuthUserDetailsContext, IAuthUserDetailsContext } from '../../context/AuthUserDetailsContext'
 import AddTodoBox from '../AddTodoInput/AddTodoBox'
+import Login from '../Login/Login'
 import { HomePageContainer } from './HomePage.styles'
 
 const HomePage = () => {
+  const {isUserLoggedIn , setIsUserLoggedIn} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
   const [isHyrdated, setIsHyrdated] = useState<boolean>(false)
 
 
@@ -13,6 +16,7 @@ const HomePage = () => {
   if(!isHyrdated) return null
   return (
     <HomePageContainer>
+      {!isUserLoggedIn && <Login />}
       <AddTodoBox />
     </HomePageContainer>
   )

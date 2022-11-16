@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext , useEffect} from 'react'
 import {IoMenuOutline , IoRefreshSharp} from "react-icons/io5"
 import {TfiViewList} from "react-icons/tfi"
 import {AiOutlineSetting} from "react-icons/ai"
@@ -15,15 +15,30 @@ import { HeaderComponent,
   ProfileAvatar } from "../Header/Header.styles"
 
 import { auth } from '../../firebaseconfig'
-import { signOut } from "firebase/auth"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 import { AuthUserDetailsContext } from '../../context/AuthUserDetailsContext'
 
+
+import {IAuthUserDetailsContext} from "../../context/AuthUserDetailsContext"
 
 
 
 const Header = () => {
-  const content = useContext(AuthUserDetailsContext)
+  const {userName, userEmail, userPhotoUrl , setUserName , setUserEmail , setUserPhotoUrl , setIsUserLoggedIn} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
 
+
+  const AuthCheck = onAuthStateChanged(auth, (user) => {
+    if(user) {
+        console.log(user.email);
+        setUserName(user.displayName as string)
+        setUserEmail(user.email as string)
+        setUserPhotoUrl(user.photoURL as string)
+        setIsUserLoggedIn(true)
+        
+    } else {
+        setIsUserLoggedIn(false)
+    }
+})
 
   return (
     <HeaderComponent>
@@ -42,7 +57,7 @@ const Header = () => {
         <AiOutlineSetting />
         <TbGridDots />
         
-        <img src={content?.userPhotoUrl as string } onClick={() => signOut(auth)} alt="dp" width={100} height={100} />
+        <img src={userPhotoUrl } onClick={() => signOut(auth)} alt="dp" width={100} height={100} />
       </HeaderRightComponent>
 
     </HeaderComponent>

@@ -17,7 +17,7 @@ export const AddTodoInputDiv = styled.div`
 export const TittleInput = styled.input`
     width: 100%;
     height: 3rem;
-    background-color: red;
+    background-color: lightcoral;
     border-radius: 0%;
     border: none;
     border-radius: 10px;
@@ -27,7 +27,7 @@ export const TittleInput = styled.input`
 export const NoteDescriptionInput = styled.input`
     width: 100%;
     height: 4rem;
-    background-color: blue;
+    background-color: lightblue;
     border-radius: 0%;
     border: none;
     border-radius: 10px;

@@ -1,16 +1,18 @@
-import React,{useState , useEffect} from 'react'
+import React,{useState , useEffect , useContext} from 'react'
 import {auth} from "../../firebaseconfig"
 import { useRouter } from 'next/router';
 import { onAuthStateChanged } from 'firebase/auth';
+import { AuthUserDetailsContext, IAuthUserDetailsContext } from '../../context/AuthUserDetailsContext';
 
 export interface IAuthRouteProps {
     children: React.ReactNode
 }
 
 const AuthRoute: React.FunctionComponent<IAuthRouteProps> = ({children}:IAuthRouteProps) => {
-    // const { children } = props;
     const router = useRouter()
     const [loading, setLoading] = useState<boolean>(false)
+
+    const {isUserLoggedIn , setIsUserLoggedIn} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
 
     useEffect(() => {
         AuthCheck()
@@ -21,9 +23,10 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = ({children}:IAuthRou
     const AuthCheck = onAuthStateChanged(auth, (user) => {
         if(user) {
             setLoading(false)
+            setIsUserLoggedIn(true)
         } else {
             console.log("Unauthorized")
-            router.push('/signin')
+            setIsUserLoggedIn(false)
         }
     })
 

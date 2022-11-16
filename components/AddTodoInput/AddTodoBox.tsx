@@ -3,6 +3,8 @@ import { AddTodoInputDiv , NoteDescriptionInput, TittleInput } from './AddTodoBo
 
 const AddTodoInput = () => {
   const [isAddTodoInputOpen , setIsAddTodoInputOpen  ] = useState<boolean>(false)
+  const [titleInput , setTittleInput] = useState<string>("")
+  const [noteDescriptionInput , setNoteDescriptionInput] = useState<string>("")
   const AddTodoInputDivRef:any = useRef(null)
   const NoteDescriptionInputRef:any = useRef(null)
 
@@ -29,8 +31,20 @@ const AddTodoInput = () => {
       }}
       ref={AddTodoInputDivRef}
       >
-        {isAddTodoInputOpen && <TittleInput  placeholder='Title' />}
-        {isAddTodoInputOpen && <NoteDescriptionInput ref={NoteDescriptionInputRef}   placeholder='Take a note...' />}
+        {isAddTodoInputOpen && 
+        <TittleInput  
+        placeholder='Title' 
+        value={titleInput}
+        onChange={(e) => {setTittleInput(e.target.value)}}
+        />}
+
+        {isAddTodoInputOpen && 
+        <NoteDescriptionInput 
+        ref={NoteDescriptionInputRef}   
+        placeholder='Take a note...' 
+        value={noteDescriptionInput}
+        onChange={(e) => {setNoteDescriptionInput(e.target.value)}}
+        />}
     </AddTodoInputDiv>
   )
 }
