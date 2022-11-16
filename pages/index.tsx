@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import HomePage from '../components/full pages/HomePage'
 import Header from '../components/Header/Header'
 import Sidebar from '../components/Sidebar/Sidebar'
@@ -22,11 +21,11 @@ export default function Home() {
 
 
         <Wrapper>
-          <AuthRoute>
-            <Header/>
-            <Sidebar/>
-            <HomePage/>
-          </AuthRoute>
+          {/* <AuthRoute> */}
+            <Header />
+            <Sidebar />
+            <HomePage />
+          {/* </AuthRoute> */}
         </Wrapper>
 
     </div>

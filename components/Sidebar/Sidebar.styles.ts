@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const SidebarComponent = styled.div`
-    background-color: green;
+    border-right: 1px solid lightgray;
     width: 6%;
-    height: 90vh;
+    height: 93vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    padding: 20px 0;
     position: fixed;
-    top: 10vh;
+    top: 7vh;
     left: 0;
 `

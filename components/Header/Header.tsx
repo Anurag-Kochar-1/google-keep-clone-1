@@ -4,8 +4,8 @@ import {TfiViewList} from "react-icons/tfi"
 import {AiOutlineSetting} from "react-icons/ai"
 import {TbGridDots} from "react-icons/tb"
 import {MdOutlineErrorOutline} from "react-icons/md"
-import Image from 'next/image'
-// import logo from '../../images/logo.png'
+import Image, { StaticImageData } from 'next/image'
+import logo from '../../images/logo.png'
 import SearchBar from '../SearchBar/SearchBar'
 
 import { HeaderComponent, 
@@ -27,37 +27,45 @@ const Header = () => {
   const {userName, userEmail, userPhotoUrl , setUserName , setUserEmail , setUserPhotoUrl , setIsUserLoggedIn} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
 
 
-  const AuthCheck = onAuthStateChanged(auth, (user) => {
-    if(user) {
-        console.log(user.email);
-        setUserName(user.displayName as string)
-        setUserEmail(user.email as string)
-        setUserPhotoUrl(user.photoURL as string)
-        setIsUserLoggedIn(true)
-        
-    } else {
-        setIsUserLoggedIn(false)
-    }
-})
+  
+
+  useEffect(() => {
+    const AuthCheck = onAuthStateChanged(auth, (user) => {
+      if(user) {
+          console.log(user.email);
+          
+          setUserName(user.displayName as string)
+          setUserEmail(user.email as string)
+          setUserPhotoUrl(user.photoURL as string)
+          setIsUserLoggedIn(true)
+          
+      } else {
+          setIsUserLoggedIn(false)
+      }
+  
+    })
+
+    return () => AuthCheck()
+  },[])
 
   return (
     <HeaderComponent>
 
       <HeaderLeftComponent>
         <IoMenuOutline style={{color: "#5F6368" , fontSize: "1.4rem", cursor: "pointer"}} />
-        {/* <Image src={logo} alt="logo" width={35} height={45} /> */}
+        <Image src={logo} alt="logo" width={35} height={45} />
         <Heading> Keep </Heading>
       </HeaderLeftComponent>
 
       <SearchBar />
 
       <HeaderRightComponent>
-        <IoRefreshSharp />
-        <TfiViewList />
-        <AiOutlineSetting />
-        <TbGridDots />
+        <IoRefreshSharp style={{fontSize: "20px" , cursor: "pointer"}} />
+        <TfiViewList style={{fontSize: "20px" , cursor: "pointer"}} />
+        <AiOutlineSetting style={{fontSize: "20px" , cursor: "pointer"}} />
+        <TbGridDots style={{fontSize: "20px" , cursor: "pointer"}} />
         
-        <img src={userPhotoUrl } onClick={() => signOut(auth)} alt="dp" width={100} height={100} />
+        <ProfileAvatar src={userPhotoUrl } onClick={() => signOut(auth)} alt="dp" />
       </HeaderRightComponent>
 
     </HeaderComponent>

@@ -9,7 +9,17 @@ export type IAuthUserDetailsContext = {
     setUserPhotoUrl : React.Dispatch<React.SetStateAction<string>>
     isUserLoggedIn: boolean
     setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+    allNotes: string[]
+    setAllNotes: React.Dispatch<any>
 }
+
+export interface Note {
+    NoteTitle : string
+    NoteDescription: string
+    creatorEmail: string
+    isCompleted: boolean
+}
+
 
 const AuthUserDetailsContext = createContext<IAuthUserDetailsContext | null>(null)
 
@@ -22,12 +32,16 @@ const AuthUserDetailsContextWrapper = ({children}:Props) => {
     const [userEmail , setUserEmail] = useState<string>('')
     const [userPhotoUrl , setUserPhotoUrl] = useState<string>("")
     const [isUserLoggedIn , setIsUserLoggedIn] = useState<boolean>(false)
+
+    const [allNotes, setAllNotes] = useState<any>([])
+
   return (
     <AuthUserDetailsContext.Provider value={{
         userName, setUserName,
         userEmail, setUserEmail,
         userPhotoUrl, setUserPhotoUrl,
-        isUserLoggedIn, setIsUserLoggedIn
+        isUserLoggedIn, setIsUserLoggedIn,
+        allNotes, setAllNotes
     }}>
         {children}
     </AuthUserDetailsContext.Provider>

@@ -10,10 +10,17 @@ export const AddTodoInputDiv = styled.div`
     cursor: text;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
-
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2rem 0;
 `
+
+export const AddTodoInputDivTitle = styled.p`
+    padding: 0 20px ;
+    font-family: sans-serif;
+    color: gray;
+`
+
 export const TittleInput = styled.input`
     width: 100%;
     height: 3rem;

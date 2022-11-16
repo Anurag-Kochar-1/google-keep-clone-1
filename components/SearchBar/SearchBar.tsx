@@ -1,11 +1,13 @@
 import React from 'react'
-import { SearchBarDiv } from "./SearchBar.styles"
+import { SearchBarDiv, SearchInput } from "./SearchBar.styles"
 
 
 const SearchBar = () => {
   return (
     <SearchBarDiv>
-
+      <SearchInput
+        placeholder='Search'
+      />
     </SearchBarDiv>
   )
 }
