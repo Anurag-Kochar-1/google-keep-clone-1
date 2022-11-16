@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import AddTodoBox from '../AddTodoInput/AddTodoBox'
+import { HomePageContainer } from './HomePage.styles'
 
 const HomePage = () => {
+
+
   return (
-    <div>HomePage</div>
+    <HomePageContainer>
+      <AddTodoBox />
+    </HomePageContainer>
   )
 }
 
