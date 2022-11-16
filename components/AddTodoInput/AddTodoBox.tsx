@@ -7,7 +7,7 @@ const AddTodoInput = () => {
   const NoteDescriptionInputRef:any = useRef(null)
 
   const handleClickOutside = (e:any) => {
-    if(!AddTodoInputDivRef.current.contains(e.target)) {
+    if(AddTodoInputDivRef.current && !AddTodoInputDivRef.current.contains(e.target)) {
       setIsAddTodoInputOpen(false)
     } else {
       if(NoteDescriptionInputRef.current) {

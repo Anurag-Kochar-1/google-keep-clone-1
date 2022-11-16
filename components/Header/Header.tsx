@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {IoMenuOutline , IoRefreshSharp} from "react-icons/io5"
 import {TfiViewList} from "react-icons/tfi"
 import {AiOutlineSetting} from "react-icons/ai"
@@ -7,7 +7,6 @@ import {MdOutlineErrorOutline} from "react-icons/md"
 import Image from 'next/image'
 // import logo from '../../images/logo.png'
 import SearchBar from '../SearchBar/SearchBar'
-import { UserAuth } from "../../context/AuthContext"
 
 import { HeaderComponent, 
   Heading, 
@@ -15,22 +14,15 @@ import { HeaderComponent,
   HeaderRightComponent, 
   ProfileAvatar } from "../Header/Header.styles"
 
-interface props {
-  googleSignIn: () => void
-}
+import { auth } from '../../firebaseconfig'
+import { signOut } from "firebase/auth"
+import { AuthUserDetailsContext } from '../../context/AuthUserDetailsContext'
+
+
 
 
 const Header = () => {
-
-  const {googleSignIn} = UserAuth()
-
-  const handleGoogleSignIn = async () => {
-    try {
-      await googleSignIn()
-    } catch (error) {
-      alert(error)
-    }
-  }
+  const content = useContext(AuthUserDetailsContext)
 
 
   return (
@@ -50,9 +42,7 @@ const Header = () => {
         <AiOutlineSetting />
         <TbGridDots />
         
-        <MdOutlineErrorOutline onClick={handleGoogleSignIn}/>
-
-        {/* <Image src={"https://th.bing.com/th/id/OIP.audMX4ZGbvT2_GJTx2c4GgHaHw?pid=ImgDet&rs=1"} alt="dp" width={100} height={100} /> */}
+        <img src={content?.userPhotoUrl as string } onClick={() => signOut(auth)} alt="dp" width={100} height={100} />
       </HeaderRightComponent>
 
     </HeaderComponent>

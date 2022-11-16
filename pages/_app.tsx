@@ -1,12 +1,12 @@
 import '../styles/globals.ts'
 import type { AppProps } from 'next/app'
+import { AuthUserDetailsContextWrapper } from "../context/AuthUserDetailsContext"
 
-import { AuthContextProvider } from "../context/AuthContext"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AuthContextProvider>
-      <Component {...pageProps} />
-    </AuthContextProvider>
+      <AuthUserDetailsContextWrapper>
+        <Component {...pageProps} />
+      </AuthUserDetailsContextWrapper>
   )
 }

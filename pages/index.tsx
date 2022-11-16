@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar/Sidebar'
 
 import { Wrapper } from "../components/Header/Header.styles"
 import GlobalStyles from "../styles/globals"
+import AuthRoute from '../components/AuthRoute/AuthRoute'
 
 export default function Home() {
   return (
@@ -21,9 +22,11 @@ export default function Home() {
 
 
         <Wrapper>
-          <Header/>
-          <Sidebar/>
-          <HomePage/>
+          <AuthRoute>
+            <Header/>
+            <Sidebar/>
+            <HomePage/>
+          </AuthRoute>
         </Wrapper>
 
     </div>
