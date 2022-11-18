@@ -11,6 +11,8 @@ const HomePage = () => {
   const [isHyrdated, setIsHyrdated] = useState<boolean>(false)
   const {userName, userEmail, userPhotoUrl , setUserName , setUserEmail , setUserPhotoUrl , setIsUserLoggedIn , isUserLoggedIn} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
 
+  
+
   useEffect(() => {
     setIsHyrdated(true)
     const AuthCheck = onAuthStateChanged(auth, (user) => {

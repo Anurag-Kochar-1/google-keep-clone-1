@@ -8,8 +8,8 @@ const AllNotesContainer = () => {
   const {allNotes} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
   return (
     <AllNotesContainerDiv>
-      {allNotes && allNotes.map((note) => {
-        return <NoteCard cardData = {note} />
+      {allNotes && allNotes.map((note , i) => {
+        return <NoteCard key={i} cardData = {note} />
       })}
 
     </AllNotesContainerDiv>

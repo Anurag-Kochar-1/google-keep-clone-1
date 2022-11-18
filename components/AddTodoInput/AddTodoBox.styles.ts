@@ -45,7 +45,7 @@ export const TittleInput = styled.input`
     border: none;
     border-radius: 10px;
     padding: 0 10px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
     `
 
@@ -55,7 +55,7 @@ export const NoteDescriptionInput = styled.input`
     border-radius: 0%;
     border: none;
     border-radius: 10px;
-    font-weight: 400;
+    font-weight: 500;
     padding: 0 10px;
     font-size: 0.9rem;
 `

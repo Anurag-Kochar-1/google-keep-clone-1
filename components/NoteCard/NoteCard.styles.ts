@@ -6,8 +6,8 @@ export const NoteCardDiv = styled.div`
     height: 250px;
     border-radius: 10px;
     margin: 30px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     padding: 20px;
     font-family: sans-serif;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HomePageContainer = styled.main`
     width: 100%;
     height: 93vh;
-    /* background-color: lightgray; */
+    /* background-color: gray; */
     margin-top: 7vh;
     overflow-x: hidden;
     overflow-y: hidden;
