@@ -1,7 +1,7 @@
 import React from 'react'
 import {AiOutlineBulb , AiOutlineBell} from "react-icons/ai"
 import {BiPencil} from "react-icons/bi"
-import {BsTrash} from "react-icons/bS"
+import {BsTrash} from "react-icons/bs"
 import {IoArchiveOutline} from "react-icons/io5"
 
 
