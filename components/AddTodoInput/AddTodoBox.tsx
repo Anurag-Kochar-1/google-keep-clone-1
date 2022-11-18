@@ -53,7 +53,6 @@ const AddTodoInput = () => {
   useEffect(() => {
     document.addEventListener("click", handleClickOutside , true)
     
-    // getNotes()
   }, [])
 
 
@@ -94,14 +93,5 @@ const AddTodoInput = () => {
   )
 }
 
-
-// export const getServerSideProps:GetServerSideProps = async (context) => {
-//   const notes = await getDocs(notesCollectionRef)
-//   return {
-//     props : {
-//       notes
-//     }
-//   }
-// }
 
 export default AddTodoInput

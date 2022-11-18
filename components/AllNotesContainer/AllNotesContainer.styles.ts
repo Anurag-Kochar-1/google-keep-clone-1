@@ -14,4 +14,16 @@ export const AllNotesContainerDiv = styled.div`
     padding: 10px;
     /* background-color: blueviolet; */
 
+    ::-webkit-scrollbar {
+    width: 0.1px;
+    }   
+
+    ::-webkit-scrollbar-track {
+    background: white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: white;
+    }
+
 `

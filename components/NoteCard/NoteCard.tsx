@@ -7,8 +7,13 @@ import { db } from '../../firebaseconfig'
 import { AuthUserDetailsContext, IAuthUserDetailsContext } from '../../context/AuthUserDetailsContext'
 
 import { NoteCardModalBackground, NoteCardModalBottomOptions, NoteCardModalContainer, NoteCardModalDescription } from '../Modal/NoteCardModal.styles'
+import { Note } from '../../customs/types'
 
-const NoteCard = ({cardData}:any) => {
+interface Props {
+  cardData: Note
+}
+
+const NoteCard = ({cardData}:Props) => {
   const {setAllNotes} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
   const [isNoteCardModalOpen , setIsNoteCardModalOpen] = useState<boolean>(false)
   const [isNoteBottomOptionsVisible , setIsNoteBottomOptionsVisible] = useState<boolean>(false)

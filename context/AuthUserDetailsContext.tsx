@@ -1,4 +1,5 @@
 import React , {createContext , useState} from 'react'
+import { Note } from "../customs/types"
 
 export type IAuthUserDetailsContext = {
     userName : string
@@ -9,7 +10,7 @@ export type IAuthUserDetailsContext = {
     setUserPhotoUrl : React.Dispatch<React.SetStateAction<string>>
     isUserLoggedIn: boolean
     setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
-    allNotes: string[]
+    allNotes: Note[]
     setAllNotes: React.Dispatch<any>
     isNoteCardModalOpen : boolean 
     setIsNoteCardModalOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -17,12 +18,12 @@ export type IAuthUserDetailsContext = {
     setSearchInput : React.Dispatch<React.SetStateAction<string>>
 }
 
-export interface Note {
-    NoteTitle : string
-    NoteDescription: string
-    creatorEmail: string
-    isCompleted: boolean
-}
+// export interface Note {
+//     NoteTitle : string
+//     NoteDescription: string
+//     creatorEmail: string
+//     isCompleted: boolean
+// }
 
 
 const AuthUserDetailsContext = createContext<IAuthUserDetailsContext | null>(null)
@@ -37,7 +38,7 @@ const AuthUserDetailsContextWrapper = ({children}:Props) => {
     const [userPhotoUrl , setUserPhotoUrl] = useState<string>("")
     const [isUserLoggedIn , setIsUserLoggedIn] = useState<boolean>(false)
 
-    const [allNotes, setAllNotes] = useState<any>([])
+    const [allNotes, setAllNotes] = useState<Note[]>([])
 
     const [ isNoteCardModalOpen , setIsNoteCardModalOpen ] = useState<boolean>(false)
 
