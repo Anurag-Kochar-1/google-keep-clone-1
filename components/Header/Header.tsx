@@ -53,7 +53,7 @@ const Header = () => {
 
       <HeaderLeftComponent>
         <IoMenuOutline style={{color: "#5F6368" , fontSize: "1.4rem", cursor: "pointer"}} />
-        <Image src={logo} alt="logo" width={35} height={45} />
+        <Image src={logo} alt="logo" width={25} height={35} />
         <Heading> Keep </Heading>
       </HeaderLeftComponent>
 
@@ -65,7 +65,8 @@ const Header = () => {
         <AiOutlineSetting style={{fontSize: "20px" , cursor: "pointer"}} />
         <TbGridDots style={{fontSize: "20px" , cursor: "pointer"}} />
         
-        <ProfileAvatar src={userPhotoUrl } onClick={() => signOut(auth)} alt="dp" />
+        {userPhotoUrl && <ProfileAvatar src={userPhotoUrl || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" } onClick={() => signOut(auth)} alt="dp" />}
+        {!userPhotoUrl && <MdOutlineErrorOutline style={{fontSize: "20px" , cursor: "pointer"}}   />}
       </HeaderRightComponent>
 
     </HeaderComponent>

@@ -6,11 +6,13 @@ export const SearchBarDiv = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0 100px;
+    /* padding: 0 100px; */
+    padding: 0 20px;
+    background-color: red;
 `
 
 export const SearchInput = styled.input`
-    width: 50%;
+    width: 90%;
     height: 5vh;
     border: none;
     outline: none;

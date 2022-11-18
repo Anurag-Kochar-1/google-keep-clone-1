@@ -7,7 +7,7 @@ const NoteCard = ({cardData}:any) => {
 
 
   return (
-    <NoteCardDiv className='openNoteCardModal' onClick={() => setIsNoteCardModalOpen(true)}>
+    <NoteCardDiv className='openNoteCardModal' >
         {isNoteCardModalOpen && <NoteCardModal cardData={cardData} setIsNoteCardModalOpen={setIsNoteCardModalOpen}  />}
         <h3> {cardData.NoteTitle} </h3>
         <p> {cardData.NoteDescription} </p>

@@ -12,4 +12,12 @@ export const SidebarComponent = styled.div`
     position: fixed;
     top: 7vh;
     left: 0;
+    display: none;
+
+
+
+    @media (min-width: 1024px) {
+        display: flex;
+        
+    }
 `

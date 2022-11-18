@@ -8,10 +8,10 @@ export const AllNotesContainerDiv = styled.div`
     overflow-x: hidden;
     overflow-y: scroll;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 100px;
+    padding: 10px;
     /* background-color: blueviolet; */
 
 `

@@ -28,7 +28,7 @@ const Login = () => {
     }
 
   return (
-    <div>
+    <div style={{backgroundColor: "gray"}}>
         <button onClick={() => signInWithGoogle()}> signInWithGoogle </button>
     </div>
   )

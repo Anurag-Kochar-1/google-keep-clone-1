@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 
 export const HomePageContainer = styled.main`
-    width: 94%;
-    margin-left: 6%;
+    width: 100%;
     height: 93vh;
-    /* background-color: red; */
+    /* background-color: lightgray; */
     margin-top: 7vh;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -15,4 +14,9 @@ export const HomePageContainer = styled.main`
     justify-content: start;
     align-items: center;
 
-`
+    @media (min-width: 1024px) {
+        margin-left: 6%;
+        width: 94%;
+    }   
+    
+    `
