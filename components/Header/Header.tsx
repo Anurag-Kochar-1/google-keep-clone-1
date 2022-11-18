@@ -65,7 +65,13 @@ const Header = () => {
         <AiOutlineSetting style={{fontSize: "20px" , cursor: "pointer"}} />
         <TbGridDots style={{fontSize: "20px" , cursor: "pointer"}} />
         
-        {userPhotoUrl && <ProfileAvatar src={userPhotoUrl || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" } onClick={() => signOut(auth)} alt="dp" />}
+        {userPhotoUrl && <ProfileAvatar src={userPhotoUrl || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" } onClick={() => {
+          signOut(auth)
+          setUserName('')
+          setUserEmail('')
+          setUserPhotoUrl('')
+          setIsUserLoggedIn(false)
+        }} alt="dp" />}
         {!userPhotoUrl && <MdOutlineErrorOutline style={{fontSize: "20px" , cursor: "pointer"}}   />}
       </HeaderRightComponent>
 
