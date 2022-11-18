@@ -11,11 +11,12 @@ import { SidebarComponent } from "./Sidebar.styles"
 const Sidebar = () => {
   return (
     <SidebarComponent>
-      <AiOutlineBulb />
-      <AiOutlineBell />
-      <BiPencil />
-      <IoArchiveOutline />
-      <BsTrash/>
+
+      <AiOutlineBulb style={{marginTop: "15px" , fontSize: "25px", cursor: "pointer"}}/>
+      <AiOutlineBell  style={{marginTop: "25px" , fontSize: "25px", cursor: "pointer"}}/>
+      <BiPencil  style={{marginTop: "25px" , fontSize: "25px", cursor: "pointer"}}/>
+      <IoArchiveOutline  style={{marginTop: "25px" , fontSize: "25px", cursor: "pointer"}}/>
+      <BsTrash style={{marginTop: "25px" , fontSize: "25px", cursor: "pointer"}}/>
 
     </SidebarComponent>
   )

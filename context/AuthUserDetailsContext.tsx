@@ -11,6 +11,10 @@ export type IAuthUserDetailsContext = {
     setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
     allNotes: string[]
     setAllNotes: React.Dispatch<any>
+    isNoteCardModalOpen : boolean 
+    setIsNoteCardModalOpen : React.Dispatch<React.SetStateAction<boolean>>
+    searchInput: string
+    setSearchInput : React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface Note {
@@ -35,13 +39,21 @@ const AuthUserDetailsContextWrapper = ({children}:Props) => {
 
     const [allNotes, setAllNotes] = useState<any>([])
 
+    const [ isNoteCardModalOpen , setIsNoteCardModalOpen ] = useState<boolean>(false)
+
+
+    const [ searchInput , setSearchInput ] = useState<string>("")
+
+
   return (
     <AuthUserDetailsContext.Provider value={{
         userName, setUserName,
         userEmail, setUserEmail,
         userPhotoUrl, setUserPhotoUrl,
         isUserLoggedIn, setIsUserLoggedIn,
-        allNotes, setAllNotes
+        allNotes, setAllNotes,
+        isNoteCardModalOpen , setIsNoteCardModalOpen,
+        searchInput, setSearchInput
     }}>
         {children}
     </AuthUserDetailsContext.Provider>

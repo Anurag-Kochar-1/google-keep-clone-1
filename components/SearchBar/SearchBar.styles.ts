@@ -8,7 +8,7 @@ export const SearchBarDiv = styled.div`
     align-items: center;
     /* padding: 0 100px; */
     padding: 0 20px;
-    background-color: red;
+    /* background-color: red; */
 `
 
 export const SearchInput = styled.input`

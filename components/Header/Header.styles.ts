@@ -30,7 +30,7 @@ export const HeaderLeftComponent = styled.div`
     justify-content: space-around;
     align-items: center;
     padding: 0 10px;
-    background-color: gray;
+    /* background-color: gray; */
 
     @media (min-width: 1024px) {
         width: 20%;
@@ -53,7 +53,7 @@ export const HeaderRightComponent = styled.div`
     
     @media (min-width: 1024px) {
         display: inline-flex;
-        background-color: gold;
+        /* background-color: gold; */
         width: 30%;
     }
 `

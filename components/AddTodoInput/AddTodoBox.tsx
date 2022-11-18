@@ -18,43 +18,42 @@ const AddTodoInput = () => {
     if(AddTodoInputDivRef.current && !AddTodoInputDivRef.current.contains(e.target)) {
       setIsAddTodoInputOpen(false)
     } else {
-      if(NoteDescriptionInputRef.current) {
-        // NoteDescriptionInputRef.current.focus()
-      }
+      
     }
   }
 
   const addNote = async () => {
-    console.log(`addNote is running`);
-    await addDoc(notesCollectionRef, {
-      NoteTitle: titleInput,
-      NoteDescription : noteDescriptionInput,
-      isCompleted : false,
-      creatorEmail: userEmail
-    })
-    setIsAddTodoInputOpen(false)
-    setTittleInput("")
-    setNoteDescriptionInput("")
+
+    if(titleInput && noteDescriptionInput) {
+      await addDoc(notesCollectionRef, {
+        NoteTitle: titleInput,
+        NoteDescription : noteDescriptionInput,
+        isCompleted : false,
+        creatorEmail: userEmail
+      })
+      setIsAddTodoInputOpen(false)
+      setTittleInput("")
+      setNoteDescriptionInput("")
+    } else {
+      alert("fill both fields")
+    }
+    
   }
 
   
 
-  const getNotes = async () => {
-    console.log(`getNotes is running`);
-    
+   const getNotes = async () => {
     const data = await getDocs(notesCollectionRef)
     setAllNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id})))
-    
     
   }
   
 
 
   useEffect(() => {
-    console.log('useEffect is running inside AddTodoInput.tsx');
-    
     document.addEventListener("click", handleClickOutside , true)
-    getNotes()
+    
+    // getNotes()
   }, [])
 
 

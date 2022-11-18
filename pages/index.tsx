@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React, {useContext , useEffect} from 'react'
 import HomePage from '../components/full pages/HomePage'
 import Header from '../components/Header/Header'
 import Sidebar from '../components/Sidebar/Sidebar'
@@ -7,8 +8,21 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import { Wrapper } from "../components/Header/Header.styles"
 import GlobalStyles from "../styles/globals"
 import AuthRoute from '../components/AuthRoute/AuthRoute'
+import { GetServerSideProps } from 'next'
+import { collection, getDocs } from 'firebase/firestore'
+import { AuthUserDetailsContext, IAuthUserDetailsContext } from '../context/AuthUserDetailsContext'
+import { db } from '../firebaseconfig'
 
-export default function Home() {
+export default function Home( {data}:any ) {
+    
+
+  useEffect(() => {
+    setAllNotes(data?.docs?.map((doc:any) => ({ ...doc.data(), id: doc.id})))
+  },[])
+  
+
+  const { setAllNotes }  = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
+
   return (
     <div>
       <GlobalStyles />
@@ -21,13 +35,26 @@ export default function Home() {
 
 
         <Wrapper>
-          {/* <AuthRoute> */}
             <Header />
             <Sidebar />
             <HomePage />
-          {/* </AuthRoute> */}
         </Wrapper>
 
     </div>
   )
+}
+
+export const getServerSideProps:GetServerSideProps = async (context) => {
+  console.log(`getServerSideProps is running`);
+  
+  const notesCollectionRef = collection(db, "notes");
+
+    const data = await getDocs(notesCollectionRef)
+
+  return {
+    props: {
+      data: JSON.parse(JSON.stringify(data)) 
+
+    }
+  }
 }

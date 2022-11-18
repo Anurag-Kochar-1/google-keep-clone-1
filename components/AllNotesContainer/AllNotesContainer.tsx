@@ -5,11 +5,19 @@ import NoteCard from '../NoteCard/NoteCard'
 import { AllNotesContainerDiv } from './AllNotesContainer.styles'
 
 const AllNotesContainer = () => {
-  const {allNotes} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
+  const {allNotes , userEmail , searchInput} = useContext(AuthUserDetailsContext) as IAuthUserDetailsContext
+  // console.log(`userEmail -> ${userEmail}`);
+  
   return (
     <AllNotesContainerDiv>
-      {allNotes && allNotes.map((note , i) => {
-        return <NoteCard key={i} cardData = {note} />
+      {allNotes && allNotes.filter((note) => {
+        if(!searchInput) {
+          return note
+        } else if (note.NoteTitle.toLowerCase().includes(searchInput.toLowerCase())) {
+          return note
+        }
+      }).map((note:any , i) => {
+        return note.creatorEmail === userEmail ?  <NoteCard key={i} cardData = {note} /> : null
       })}
 
     </AllNotesContainerDiv>
@@ -17,3 +25,6 @@ const AllNotesContainer = () => {
 }
 
 export default AllNotesContainer
+
+
+
